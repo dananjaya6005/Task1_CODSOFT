@@ -111,7 +111,7 @@ router.post('/updatepost', (req,res) => {
                 res.status(400).json(
                     {
                         success: false,
-                        msg: 'somthing wrong',
+                        msg: 'somthing wrong ! please check error',
                         data : [],
                         errors :{
                            err : err
