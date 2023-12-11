@@ -124,7 +124,85 @@ router.post('/updatepost', (req,res) => {
  
  });
 
+ router.get('/getpostall',(req,res)=>{
+    BlogPost.find()
+    .then((posts)=>{
+        res.json({
+            success: true,
+            msg: 'Post get!',
+            data: posts,
+            errors: null
+            
+        });
+    })
+    .catch((err) => {
+        res.status(400).json(
+            {
+                success: false,
+                msg: 'somthing wrong ! please check error',
+                data : [],
+                errors :{
+                   err : err
+                }
+              }
+        
+           );
+    });
+ })
 
+
+ router.get('/getpostbyid/:id' , (req,res)=>{
+
+
+    BlogPost.findById(req.params.id)
+    .then((post)=>{
+        res.json({
+            success: true,
+            msg: 'Post get!',
+            data: post,
+            errors: null
+        })
+ })
+    .catch((err)=>{
+        res.status(400).json(
+            {
+                success: false,
+                msg: 'somthing wrong ! please check error',
+                data : [],
+                errors :{
+                err : err
+                }
+            }
+        );
+    })  
+});
+
+
+router.delete('/deletepost/:id' , (req,res)=>{
+
+    BlogPost.findByIdAndDelete(req.params.id)
+    .then((post)=>{
+        res.json({
+            success: true,
+            msg: 'Post deleted!',
+            data: post,
+            errors: null
+        })
+ })
+    .catch((err)=>{
+        res.status(400).json(
+            {
+                success: false,
+                msg: 'somthing wrong ! please check error',
+                data : [],
+                errors :{
+                err : err
+                }
+            }
+        );
+    })  
+});
+ 
     
 
 
