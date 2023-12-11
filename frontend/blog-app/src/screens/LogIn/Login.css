@@ -1,0 +1,71 @@
+button{
+    margin: 20px;
+}
+
+.customInput{
+    width: 450px;
+}
+
+.loginLogo{
+    width: 25%;
+    margin:5px;
+    transition: 1000ms;
+}
+
+.loginLogo:hover {
+    filter: drop-shadow(0 0 2em #8489eeaa);
+    transition: 1000ms;
+      
+}
+
+
+
+.HeadLogin{
+
+    font-family: 'Sedgwick Ave', Courier, monospace;
+    font-size: 2.7rem;
+    color: rgb(18, 54, 68);
+}
+
+p{
+    margin-top: -25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    font-size: larger;
+}
+
+.secondsubtext{
+    font-size: 1rem;
+}
+
+.verifytext{
+    font-size: 1.5rem;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(10, 51, 82);
+    opacity: 0.3;
+}
+
+.SignInbtnOverride{
+  align-self: center;
+  width: fit-content;
+  border-radius: 25px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #2f333e;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+
+@media only screen and (min-width: 1700px) {
+    .loginLogo{
+        width: 25%;
+    }
+    .wholeBody{
+        margin-top: 5%;
+    }
+    
+  }
