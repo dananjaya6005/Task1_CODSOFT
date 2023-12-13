@@ -10,16 +10,16 @@ import FAQs from "./src/screens/FAQs/FAQs";
 import Footer from "./src/components/Footer";
 import BlogById from "./src/screens/BlogByID/BlogById";
 import EditBlogs from "./src/screens/EditBlogs/EditBlogs";
-
-
+import MyblogProtected from "./src/protectedRouter/MyblogProtected";
+import { useLocation } from "react-router-dom";
+import CreatePostProtected from "./src/protectedRouter/CreatePostProtected";
 const MainRouter = () => {
 
     return (
         <>
-    {
-            showNavBarNorNot()
-        }
+     
 
+        {RenderNavBar()}
         
         
         <Routes>
@@ -31,32 +31,45 @@ const MainRouter = () => {
         <Route path="/FAQs" element={<FAQs />} />
         <Route path="/blog/:id" element={<BlogById />} />
         <Route path="/editblog/:id" element={<EditBlogs />} />
+        <Route path="/myblogprotected" element={<MyblogProtected />} />
+        <Route path="/createpostprotected" element={<CreatePostProtected />} />
         </Routes>
-        
-        {
-            showFooterOrNot()
-        }
+
+        {RenderFooter()}
+       
         
         </>
     );
 };
 
+const RenderNavBar = (): any => {
+    const location = useLocation();
+    const CurruntPath = location.pathname;
+   
+
+    if(CurruntPath === '/login' || CurruntPath === '/signup'){
+        return null;
+    }
+    return <NavBar/>;
+  
+  };
+
+
+  const RenderFooter = (): any => {
+    const location = useLocation();
+    const CurruntPath = location.pathname;
+    
+    if(CurruntPath === '/login' || CurruntPath === '/signup'){
+        return null;
+    }
+
+    return <Footer/>;
+  
+ 
+  };
+
+
 export default MainRouter;
 
 
-export const showNavBarNorNot =()=>{
-    const {  isSignedIn } = useUser();
-    if (isSignedIn) {
-        return <NavBar/>
-    }
-    return null;
-}
-
-export const showFooterOrNot =()=>{
-    const {  isSignedIn } = useUser();
-    if (isSignedIn) {
-        return <Footer/>
-    }
-    return null;
-}
 

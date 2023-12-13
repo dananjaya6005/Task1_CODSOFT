@@ -10,9 +10,13 @@ import { Link ,useNavigate } from "react-router-dom";
 
 export default function TopHeaderCard() {
 
- 
-
  const [latestPost, setLatestPost] = useState([] as Post[]);
+ const [takeLeast5Post , setTakeLeast5Post] = useState([] as Post[]);
+
+
+  useEffect(() => {
+    setTakeLeast5Post(latestPost.reverse().slice(0, 4));
+  }, [latestPost]);
 
   useEffect (()=>{
 
@@ -20,6 +24,7 @@ export default function TopHeaderCard() {
     .then((response) => {
       console.log(response.data);
       setLatestPost(response.data.data);
+     
     })
     .catch((err) => {
       console.log(err);
@@ -27,9 +32,7 @@ export default function TopHeaderCard() {
    
   },[])
   
-  const onChange = (currentSlide: number) => {
-    console.log(currentSlide);
-  };
+ 
 
   return (
     <>
@@ -45,13 +48,17 @@ export default function TopHeaderCard() {
         <div className=" flex justify-center  ">
           <div className="w-7/12  rounded-lg ">
             <Carousel
-             pauseOnDotsHover={false}  
              
-              className="w-full shadow-lg rounded-lg"
-              afterChange={onChange}
+            draggable={true}
+
+              swipe={true}
+            touchMove={true}
+             pauseOnDotsHover={false}  
+              className="w-full shadow-lg rounded-lg cursor-move "
+              
               autoplay
             >
-              {latestPost.map((item, index) => {
+              {takeLeast5Post.map((item, index) => {
                 
                 return (
                   <div>

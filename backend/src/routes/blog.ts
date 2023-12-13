@@ -5,9 +5,9 @@ import BlogPost from '../models/blogModel';
 const router = express.Router();
 
 router.post('/createpost', (req,res) => {
-   const { title, content , summary , author ,published } = req.body;
+   const { title, content , summary , author ,published ,imageURL, username } = req.body;
   
-   if (!title || !content || !summary || !author) {
+   if (!title || !content || !summary || !author ) {
        return res.status(400).json(
         {
             success: false,
@@ -22,10 +22,12 @@ router.post('/createpost', (req,res) => {
    } else {
     
     const newBlogPost = new BlogPost({
+        username,
         title,
         content,
         summary,
         author,
+        imageURL,
         published
     });
 
@@ -36,10 +38,12 @@ router.post('/createpost', (req,res) => {
                 msg: 'Post created!',
                 data: [{ 
                     id: savedPost._id,
+                    username: savedPost.username,
                     title: savedPost.title,
                     author: savedPost.author,
                     content: savedPost.content,
                     summary: savedPost.summary,
+                    imageURL: savedPost.imageURL,
                     published: savedPost.published
 
                  }],
@@ -66,9 +70,9 @@ router.post('/createpost', (req,res) => {
 
 
 router.post('/updatepost', (req,res) => {
-    const { id,  title, content , summary , author ,published } = req.body;
+    const { id,  title, content , summary , author ,published} = req.body;
    
-    if (!title || !content || !summary || !author) {
+    if (!title || !content || !summary || !author || !id) {
         return res.status(400).json(
          {
              success: false,
@@ -185,6 +189,31 @@ router.delete('/deletepost/:id' , (req,res)=>{
         res.json({
             success: true,
             msg: 'Post deleted!',
+            data: post,
+            errors: null
+        })
+ })
+    .catch((err)=>{
+        res.status(400).json(
+            {
+                success: false,
+                msg: 'somthing wrong ! please check error',
+                data : [],
+                errors :{
+                err : err
+                }
+            }
+        );
+    })  
+});
+
+
+router.get('/getpostbyusername/:username' , (req,res)=>{
+    BlogPost.find({username : req.params.username})
+    .then((post)=>{
+        res.json({
+            success: true,
+            msg: 'Post get!',
             data: post,
             errors: null
         })

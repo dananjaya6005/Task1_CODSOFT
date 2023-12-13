@@ -9,7 +9,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { KeyOutlined } from "@ant-design/icons";
 import { Alert, Input } from "antd";
 import { LockOutlined } from "@ant-design/icons";
-
+import LogoSinUp from './LoginPageBg.jpg';
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -85,13 +85,15 @@ export default function SignUp() {
 
   return (
     <div className="SignupContainer">
-        <div className="text-red-400">dfdf</div>
+
+      <div className="bg-white bg-opacity-70 p-10 rounded-lg 
+      flex justify-center flex-col items-center ">
+      
       {!pendingVerification && (
-        <div>
-          <h3 className="headSignUp">Welcome! Create a fresh account. </h3>
+        <div className=" justify-center flex flex-col items-center  ">
+          <h3 className="headSignUp">Join Dhananjaya’s Digest! </h3>
           <p className="subtextSignUp">
-            Join us on our misson to empower the future generations through
-            donation.
+          Become a part of our community and start your journey.
           </p>
           <hr />
           {/* <img src={LogoSignUp} alt="logo" className="LogoSignUp" /> */}
@@ -170,7 +172,7 @@ export default function SignUp() {
               />
             </div>
 
-            <button style={{ margin: 20 }} onClick={handleSubmit}>
+            <button className="ml-2 bg-gray-800 px-6 py-2 text-white rounded-3xl my-3 duration-500 hover:bg-slate-500" onClick={handleSubmit}>
               Register
             </button>
           </form>
@@ -215,6 +217,7 @@ export default function SignUp() {
           <button onClick={() => navigate("/")}>Go to Home</button>
         </div>
       )}
+      </div>
     </div>
   );
 }

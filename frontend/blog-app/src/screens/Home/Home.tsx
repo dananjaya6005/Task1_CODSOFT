@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { useState,useEffect } from 'react';
-import TopHeaderCard from '../../components/TopHeaderCard';
+import axios from "axios";
+import { useState, useEffect } from "react";
+import TopHeaderCard from "../../components/TopHeaderCard";
 
 export interface Post {
   _id: number;
@@ -11,56 +11,48 @@ export interface Post {
   content: string;
   summary: string;
   created_at: string;
-
-
 }
 
-
 export default function Home() {
-
   const [posts, setPosts] = useState([] as Post[]);
 
-  useEffect (()=>{
-    axios.get("http://localhost:3000/blog/getpostall/")
-    .then((response) => {
-     
-      setPosts(response.data.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  },[])
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/blog/getpostall/")
+      .then((response) => {
+        setPosts(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-   console.log(posts);
-
-
+  console.log(posts);
 
   return (
     <>
-    <div className='min-h-screen relative '>
-    <h2>Home</h2>
-    <TopHeaderCard/>
+      <div className="min-h-screen relative  ">
+        <div className="mt-10">
 
-    <div className='bg-gray-200 h-fu'>
 
-    </div>
-    {/* <div>
-      {
-        posts && posts.map((post:any)=>{
-          return(
-            <div>
-              <h1>{post.title}</h1>
-              <h3>{post.author}</h3>
-              <p>{post.summary}</p>
-              <img src={post.imageURL} alt="image" />
-            </div>
-          )
-        })
-      }
-   
-   
-    </div> */}
-    </div>
+          <div className="">
+
+          <div className="w-7/12 bg-slate-700 flex justify-center  ">
+            <h2 className=" ml-10 text-2xl font-semibold text-gray-800">
+              Explore the latest posts
+            </h2>
+            <p className="ml-10 mb-5 italic ">
+              {" "}
+              Here's what we've been up to recently{" "}
+            </p>
+          </div>
+
+          </div>
+        
+
+          <TopHeaderCard />
+        </div>
+      </div>
     </>
-  )
+  );
 }

@@ -48,20 +48,26 @@ export default function SignInForm() {
   return (
     <React.Fragment>
       <div className="wholeBody">
-        <h3 className="HeadLogin">Gifts Of Hope</h3>
-        <p>Welcome back to our circle of kindness! </p>
+        <h3 className="HeadLogin">Dhananjaya’s Digest</h3>
+        <p className="my-2 font-medium ">Welcome back to our circle of writters ! </p>
+        
         <p className="secondsubtext">
-          Your generosity has the power to make a difference. Log in and let’s
-          continue this journey of giving, together!
+          Dive into the world of Dhananjaya’s thoughts and experiences. Join us
+          to explore, learn, and share your own stories
         </p>
         <hr />
         {/* <img src={loginLogo} alt="logo" className="loginLogo" /> */}
 
-        <div style={{ display:'flex',
-        flexDirection:'column', alignItems:'center',
-         justifyContent:'center'}}>
-          <form style={{width:'450px'}}>
-            <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <form style={{ width: "450px" ,marginTop:20 }}>
+            <div >
               <label htmlFor="email"></label>
               <Input
                 className="customInput"
@@ -91,16 +97,17 @@ export default function SignInForm() {
               />
             </div>
 
-            <div style={{display:'flex' ,flexDirection:"column"}}>
-            {/* <a style={{textAlign:'right', marginTop:15, cursor:'pointer'}} onClick={()=>{navigate('/resetpassword')}} >reset password </a> */}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              {/* <a style={{textAlign:'right', marginTop:15, cursor:'pointer'}} onClick={()=>{navigate('/resetpassword')}} >reset password </a> */}
 
-            <button className="SignInbtnOverride" style={{ margin: 20}} onClick={handleSubmit}>
-              Sign In
-            </button>
-            
-
+              <button
+                className="SignInbtnOverride"
+                style={{ margin: 20 , color:'white' }}
+                onClick={handleSubmit}
+              >
+                Sign In
+              </button>
             </div>
-           
           </form>
 
           <Link to="/signup">Don't have an account? </Link>

@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
-import {UserButton} from "@clerk/clerk-react";
+import {UserButton, useUser} from "@clerk/clerk-react";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "My Blogs", href: "/myblogs", current: false },
-  { name: "Create Blogs", href: "/features", current: false },
+  { name: "My Blogs", href: "/myblogprotected", current: false },
+  { name: "Create Blogs", href: "/createpostprotected", current: false },
   { name: "FAQs", href: "/FAQs", current: false },
 ];
 
@@ -17,6 +17,7 @@ function classNames(...classes: string[]) {
 
 export default function Example() {
   const navigate = useNavigate();
+  const { isSignedIn } = useUser();
   const [showModal, setShowModal] = useState(false);
 
   function openModal() {
@@ -112,7 +113,18 @@ export default function Example() {
                 </div>
 
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <UserButton afterSignOutUrl='/' />
+               
+                {
+                  !isSignedIn ? (
+                    <button onClick={()=>{navigate('/login')}} className="bg-gray-700 px-5 py-2 rounded-lg text-white hover:bg-slate-500 ease-in transition-all duration-800 " >Sign In</button>
+                  ) : (
+                    <UserButton afterSignOutUrl='/' />
+                  )
+
+                }
+
+                
+                
                   {/* Profile dropdown */}
                 </div>
               </div>

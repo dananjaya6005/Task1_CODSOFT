@@ -2,9 +2,11 @@ import express, { Request, Response } from 'express';
 import blog from './routes/blog';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from "cors";
 
 dotenv.config();
 const app = express();
+app.use(cors());
 const port = 3000;
 
 app.use(express.json());

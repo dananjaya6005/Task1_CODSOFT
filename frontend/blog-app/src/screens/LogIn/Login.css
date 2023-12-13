@@ -1,7 +1,19 @@
 button{
     margin: 20px;
 }
+.wholeBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    background-image: url('./bgSingIn.jpg');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
+}
 .customInput{
     width: 450px;
 }
@@ -22,8 +34,9 @@ button{
 
 .HeadLogin{
 
-    font-family: 'Sedgwick Ave', Courier, monospace;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 2.7rem;
+    
     color: rgb(18, 54, 68);
 }
 
@@ -36,6 +49,7 @@ p{
 
 .secondsubtext{
     font-size: 1rem;
+    
 }
 
 .verifytext{
@@ -65,7 +79,7 @@ p{
         width: 25%;
     }
     .wholeBody{
-        margin-top: 5%;
+       
     }
     
   }
