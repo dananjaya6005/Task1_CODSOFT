@@ -7,6 +7,10 @@ import { useUser } from "@clerk/clerk-react";
 import Features from "./src/screens/Features/Features";
 import MyBlogs from "./src/screens/MyBlogs/MyBlogs";
 import FAQs from "./src/screens/FAQs/FAQs";
+import Footer from "./src/components/Footer";
+import BlogById from "./src/screens/BlogByID/BlogById";
+import EditBlogs from "./src/screens/EditBlogs/EditBlogs";
+
 
 const MainRouter = () => {
 
@@ -15,6 +19,8 @@ const MainRouter = () => {
     {
             showNavBarNorNot()
         }
+
+        
         
         <Routes>
         <Route path="/" element={<Home />} />
@@ -23,7 +29,14 @@ const MainRouter = () => {
         <Route path="/features" element={<Features />} />
         <Route path="/myblogs" element={<MyBlogs />} />
         <Route path="/FAQs" element={<FAQs />} />
+        <Route path="/blog/:id" element={<BlogById />} />
+        <Route path="/editblog/:id" element={<EditBlogs />} />
         </Routes>
+        
+        {
+            showFooterOrNot()
+        }
+        
         </>
     );
 };
@@ -38,3 +51,12 @@ export const showNavBarNorNot =()=>{
     }
     return null;
 }
+
+export const showFooterOrNot =()=>{
+    const {  isSignedIn } = useUser();
+    if (isSignedIn) {
+        return <Footer/>
+    }
+    return null;
+}
+

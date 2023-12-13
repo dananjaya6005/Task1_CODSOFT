@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
- 
+}
+
+p {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1rem ;
 }
 
 h2 {
@@ -25,6 +31,7 @@ h3 {
 a {
   color: #0055ff;
   text-decoration: none;
+  cursor: pointer;
 }
 
 ul {
@@ -39,5 +46,6 @@ ol {
 li {
   margin-bottom: 0.5rem;
 }
+
 
 

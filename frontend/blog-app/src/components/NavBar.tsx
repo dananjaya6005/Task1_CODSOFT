@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Disclosure } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon,  UserIcon} from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import {UserButton} from "@clerk/clerk-react";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "My Blogs", href: "/myblogs", current: false },
-  { name: "Features", href: "/features", current: false },
+  { name: "Create Blogs", href: "/features", current: false },
   { name: "FAQs", href: "/FAQs", current: false },
 ];
 
@@ -24,9 +25,14 @@ export default function Example() {
 
   return (
     <>
+    <div aria-hidden="true" className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
+        <div className="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"></div>
+        <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+    </div>
+
       <Disclosure
         as="nav"
-        className=" bg-white  border-b-2  border-gray-200 z-10 relative "
+        className=" bg-white  border-b-2  border-gray-200 z-10 relative p-0 m-0 "
       >
         {({ open }) => (
           <>
@@ -106,16 +112,7 @@ export default function Example() {
                 </div>
 
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button
-                    type="button"
-                    onClick={openModal}
-                    className="m-4 relative rounded-full bg-white p-1 text-gray-600 hover:text-black"
-                  >
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only">View notifications</span>
-                    <UserIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
-
+                <UserButton afterSignOutUrl='/' />
                   {/* Profile dropdown */}
                 </div>
               </div>

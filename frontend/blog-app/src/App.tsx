@@ -17,11 +17,12 @@ const clerkPubKey = 'pk_test_dG91Y2hlZC1ndWxsLTI2LmNsZXJrLmFjY291bnRzLmRldiQ';
 export default function App() {
   return (
     <>
-    <BrowserRouter>
     
+    <BrowserRouter>
       <ClerkProvider publishableKey={clerkPubKey}>
       <MainRouter />
       <SignedIn>
+        
         {/* //somting  */}
       </SignedIn>
       <SignedOut>
