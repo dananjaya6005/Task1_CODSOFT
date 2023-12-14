@@ -1,7 +1,9 @@
+//@ts-nocheck
+
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Post } from "../Home/Home";
+
 
 export default function BlogById() {
   const { id } = useParams();
@@ -12,7 +14,7 @@ export default function BlogById() {
   useEffect(() => {
 
     if(id){
-        axios.get(`http://localhost:3000/blog/getpostbyid/${id}`)
+        axios.get(`https://blop-app-codsoft-backend.onrender.com/blog/getpostbyid/${id}`)
         .then((response) => {
             console.log(response.data);
             setPost(response.data.data);

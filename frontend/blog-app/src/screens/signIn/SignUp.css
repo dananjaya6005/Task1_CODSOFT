@@ -46,3 +46,22 @@
   
 
 }
+
+@media only screen and (max-width: 600px){
+    .customInputSignUp{
+        width: 300px;
+    }
+    .LogoSignUp{
+        width: 30%;
+    }
+    .headSignUp{
+        font-size: 1.6rem;
+    }
+    .subtextSignUp{
+        font-size: small;
+    }
+    
+    .SignupContainer{
+        background-image: none;
+    }
+}

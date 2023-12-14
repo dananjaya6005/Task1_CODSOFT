@@ -1,4 +1,4 @@
-import { Button } from "antd";
+//@ts-nocheck
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
@@ -7,25 +7,42 @@ import { Link } from "react-router-dom";
 export default function MyBlogs() {
   const { user } = useUser();
   const [postForUser, setPostForUser] = React.useState([]);
+  const [needtoReload, setNeedtoReload] = React.useState(false);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/blog/getpostbyusername/${user.username}`)
+      .get(`https://blop-app-codsoft-backend.onrender.com/blog/getpostbyusername/${user.username}`)
       .then((response) => {
         console.log(response.data);
         setPostForUser(response.data.data);
+       
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [needtoReload]);
+
+
+   function deletePost(id:string) {
+    axios
+      .delete(`https://blop-app-codsoft-backend.onrender.com/blog/deletepost/${id}`)
+      .then((response) => {
+         console.log(response.data);
+         setTimeout(()=>{
+          setNeedtoReload(!needtoReload)
+        },1000)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+   }
+
 
   return (
     <div className="min-h-screen relative">
       <div>
-        <h2>MyBlogs</h2>
 
-        <Button type="primary">Create a new blog</Button>
+        <h3 className="m-5 font-medium text-gray-700 ">My Blogs ...</h3>
 
         <div className="deletePostcard">
           {postForUser.map((post, index) => {
@@ -41,7 +58,7 @@ export default function MyBlogs() {
  
                     <div className="my-2">
                     <Link to={`/editblog/${post._id}`} className="text-blue-500 ">Update Blog </Link>
-                    <button className="text-red-500 mx-5 ">Delete Blog</button>
+                    <button onClick={()=>{deletePost(post._id)}}  className="text-red-500 mx-5 ">Delete Blog</button>
                     <Link className="text-green-600" to={`/blog/${post._id}`} >View Blog</Link>
 
                     </div>

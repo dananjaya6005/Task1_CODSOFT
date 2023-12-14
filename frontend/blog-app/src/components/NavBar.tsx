@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useNavigate } from "react-router-dom";
-import {UserButton, useUser} from "@clerk/clerk-react";
+import { Link, useNavigate } from "react-router-dom";
+import {UserButton, useUser} from "@clerk/clerk-react"
+import axios from "axios";
+import { Post } from "../screens/Home/Home";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -18,11 +20,30 @@ function classNames(...classes: string[]) {
 export default function Example() {
   const navigate = useNavigate();
   const { isSignedIn } = useUser();
-  const [showModal, setShowModal] = useState(false);
+  const [posts, setPosts] = useState([] as Post[]);
+  const [filteredData, setFilteredData] = useState([] as Post[]);
 
-  function openModal() {
-    setShowModal(!showModal);
-  }
+  useEffect(() => {
+    axios
+      .get("https://blop-app-codsoft-backend.onrender.com/blog/getpostall/")
+      .then((response) => {
+        setPosts(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
+  const handleFilterData = (text: string) => {
+    const newData = posts.filter((post) => post.title.toLowerCase().includes(text.toLowerCase()));
+    setFilteredData(newData);
+
+    if(text === ""){
+      setFilteredData([]);
+    }
+};
+
 
   return (
     <>
@@ -90,7 +111,6 @@ export default function Example() {
 
                   {
                     <div className="pl-10 max-[600px]:hidden">
-                      
                           <form>   
                             
                               <div className="relative">
@@ -99,15 +119,38 @@ export default function Example() {
                                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                       </svg>
                                   </div>
-                                  <input type="search" id="default-search" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search Blogs ..." />
-                                 
+                                  <input onChange={(e)=>{handleFilterData(e.target.value)}} type="search" id="default-search" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search Blogs ..." />
                               </div>
                           </form>
 
 
+                        <div className="absolute bg-gray-100 bg-opacity-70 shadow-lg rounded-lg ">
+                          {
+                            filteredData.map((post)=>{
+                              return(
+                                <Link to={`/blog/${post._id}`}>
+                                <div className="bg-white rounded m-2 shadow-xm p-1 ">
+                                  <div>
+                                  <p className="text-gray-800 italic">• {" "}{post.title}</p>
+                                  
+                                  </div>
+        
+                                </div>
+                                </Link>
+                              )
+                            })
+                          }
+                        </div>
+                          
+
+                          
+
                     </div>
 
                   }
+
+                  
+                  
 
                   
                 </div>

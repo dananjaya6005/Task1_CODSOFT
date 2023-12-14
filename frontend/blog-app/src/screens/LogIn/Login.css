@@ -6,8 +6,8 @@ button{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  
-    background-image: url('./bgSingIn.jpg');
+    
+    background-image: url('./best-wordpress-blogs-featured-image.jpg');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,14 +15,9 @@ button{
 
 }
 .customInput{
-    width: 450px;
+    width: 100%;
 }
 
-.loginLogo{
-    width: 25%;
-    margin:5px;
-    transition: 1000ms;
-}
 
 .loginLogo:hover {
     filter: drop-shadow(0 0 2em #8489eeaa);
@@ -73,13 +68,37 @@ p{
   transition: border-color 0.25s;
 }
 
+@media only screen and (max-width:640px){
+    .customInput{
+        width: 100%;
+    }
+
+    .wholeBody{
+        background-image: none;
+       
+    }
+}
+
 
 @media only screen and (min-width: 1700px) {
     .loginLogo{
         width: 25%;
     }
     .wholeBody{
+
        
     }
+
+    .customInput{
+        width: 500px;
+    }
     
+    
+  }
+
+
+  @media only screen and (max-width: 1300px){
+  
+
+  
   }

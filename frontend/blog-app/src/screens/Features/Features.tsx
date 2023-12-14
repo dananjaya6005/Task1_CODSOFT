@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReactQuill from "react-quill";
@@ -71,7 +71,7 @@ export default function Features() {
 
   async function cretepost() {
     await axios
-      .post("http://localhost:3000/blog/createpost/", {
+      .post("https://blop-app-codsoft-backend.onrender.com/blog/createpost/", {
         title: title,
         username: user.username,
         content: content,
@@ -220,7 +220,7 @@ export default function Features() {
             </div>
 
             <div>
-              <p className="text-red-400 my-2 text-sm ">* Please select .jpg file only</p>
+              <p className="text-red-400 my-2 text-sm ">* Please select .jpg file only or try .jpeg</p>
               <ImgCrop aspect={600 / 400}>
                 <Upload {...props}>
                   <Button icon={<UploadOutlined />}>

@@ -1,10 +1,10 @@
 import {FormOutlined} from "@ant-design/icons/lib/icons";
-import { Button, FloatButton, ConfigProvider, Carousel, Tooltip } from "antd";
+import {  FloatButton, ConfigProvider, Carousel, Tooltip } from "antd";
 import { StyleProvider } from "@ant-design/cssinjs";
 import { useEffect, useState } from "react";
 import { Post } from "../screens/Home/Home"
 import axios from "axios";
-import { Link ,useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -20,7 +20,7 @@ export default function TopHeaderCard() {
 
   useEffect (()=>{
 
-    axios.get("http://localhost:3000/blog/getpostall/")
+    axios.get("https://blop-app-codsoft-backend.onrender.com/blog/getpostall/")
     .then((response) => {
       console.log(response.data);
       setLatestPost(response.data.data);
@@ -46,7 +46,7 @@ export default function TopHeaderCard() {
         <StyleProvider hashPriority="high">
 
         <div className=" flex justify-center  ">
-          <div className="w-7/12  rounded-lg ">
+          <div className="w-7/12   rounded-lg  max-[640px]:w-10/12 ">
             <Carousel
              
             draggable={true}
@@ -54,11 +54,11 @@ export default function TopHeaderCard() {
               swipe={true}
             touchMove={true}
              pauseOnDotsHover={false}  
-              className="w-full shadow-lg rounded-lg cursor-move "
+              className="w-full shadow-lg rounded-lg cursor-move  "
               
               autoplay
             >
-              {takeLeast5Post.map((item, index) => {
+              {takeLeast5Post.map((item) => {
                 
                 return (
                   <div>
@@ -94,16 +94,16 @@ export default function TopHeaderCard() {
 export function SlideShowContext(props: any) {
   
   return (
-    <div className="bg-white w-full  shadow-lg rounded-lg  flex flex-row ">
+    <div className=" h-full w-full  shadow-lg rounded-lg  flex flex-row  max-[640px]:flex-col  ">
       <img
-        className="w-1/2  object-contain rounded-md  "
+        className="w-1/2  object-contain rounded-md max-[640px]:w-full  "
         src={props.image}
         alt="image"
       />
       
       <div className=" m-4  grid 2xl:my-10 ">
       <Tooltip title={props.title} >
-        <h4 className="text-xl font-bold text-gray-800 2xl:text-3xl">
+        <h4 className="text-xl font-bold text-gray-700 2xl:text-3xl">
           {props.title?.length > 45
             ? props.title?.substring(0, 45) + "..."
             : props.title}

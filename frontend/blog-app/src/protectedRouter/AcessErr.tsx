@@ -1,4 +1,3 @@
-import React from 'react'
 
 import  logo403 from '../Images/403 Error.png'
 

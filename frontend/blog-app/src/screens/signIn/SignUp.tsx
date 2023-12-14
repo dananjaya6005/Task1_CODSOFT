@@ -9,7 +9,6 @@ import { UserOutlined } from "@ant-design/icons";
 import { KeyOutlined } from "@ant-design/icons";
 import { Alert, Input } from "antd";
 import { LockOutlined } from "@ant-design/icons";
-import LogoSinUp from './LoginPageBg.jpg';
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -86,7 +85,7 @@ export default function SignUp() {
   return (
     <div className="SignupContainer">
 
-      <div className="bg-white bg-opacity-70 p-10 rounded-lg 
+      <div className="bg-white bg-opacity-70  p-10 rounded-lg max-[640px]:w-10/12 shadow-md
       flex justify-center flex-col items-center ">
       
       {!pendingVerification && (
@@ -102,7 +101,7 @@ export default function SignUp() {
 
       {!pendingVerification && (
         <>
-          <form>
+          <form className="">
             <div>
               <label htmlFor="firstName"></label>
               <Input

@@ -48,6 +48,8 @@ export default function SignInForm() {
   return (
     <React.Fragment>
       <div className="wholeBody">
+        <div className="bg-white p-10 rounded-md shadow-lg flex justify-center flex-col items-
+         max-[640px]:w-10/12 " >
         <h3 className="HeadLogin">Dhananjaya’s Digest</h3>
         <p className="my-2 font-medium ">Welcome back to our circle of writters ! </p>
         
@@ -55,7 +57,7 @@ export default function SignInForm() {
           Dive into the world of Dhananjaya’s thoughts and experiences. Join us
           to explore, learn, and share your own stories
         </p>
-        <hr />
+        <hr className="mt-4" />
         {/* <img src={loginLogo} alt="logo" className="loginLogo" /> */}
 
         <div
@@ -66,7 +68,7 @@ export default function SignInForm() {
             justifyContent: "center",
           }}
         >
-          <form style={{ width: "450px" ,marginTop:20 }}>
+          <form className="mt-5 items-center justify-center flex flex-col " style={{ width: "450px" ,marginTop:20 }}>
             <div >
               <label htmlFor="email"></label>
               <Input
@@ -124,6 +126,7 @@ export default function SignInForm() {
             closable
           />
         )}
+         </div>
       </div>
     </React.Fragment>
   );

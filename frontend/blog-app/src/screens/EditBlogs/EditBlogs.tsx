@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactQuill from "react-quill";
@@ -37,7 +38,7 @@ export default function EditBlogs() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/blog/getpostbyid/${id}`)
+      .get(`https://blop-app-codsoft-backend.onrender.com/blog/getpostbyid/${id}`)
       .then((response) => {
         console.log(response.data);
         setPostForEdit(response.data.data);
@@ -59,7 +60,7 @@ export default function EditBlogs() {
 
   const updatePost = () => {
     
-    axios.post(`http://localhost:3000/blog/updatepost`, {
+    axios.post(`https://blop-app-codsoft-backend.onrender.com/blog/updatepost`, {
         id: id,
         title: title,
         author: author,
