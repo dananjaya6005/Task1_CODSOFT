@@ -8,7 +8,13 @@ const blogSchema = new Schema({
     author: String,
     content: String,
     imageURL : String,
-    published : Boolean
+    published : Boolean,
+    comments : [{
+        username : String,
+        comment : String,
+        date : Date
+    }]
+
 }, {
     timestamps: {
         createdAt: 'created_at',

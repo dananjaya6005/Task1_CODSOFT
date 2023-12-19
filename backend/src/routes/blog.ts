@@ -28,7 +28,9 @@ router.post('/createpost', (req,res) => {
         summary,
         author,
         imageURL,
-        published
+        published,
+        comments : []
+
     });
 
     newBlogPost.save()
@@ -44,7 +46,8 @@ router.post('/createpost', (req,res) => {
                     content: savedPost.content,
                     summary: savedPost.summary,
                     imageURL: savedPost.imageURL,
-                    published: savedPost.published
+                    published: savedPost.published,
+                    comments : savedPost.comments
 
                  }],
                 errors: null
@@ -209,6 +212,8 @@ router.delete('/deletepost/:id' , (req,res)=>{
 
 
 router.get('/getpostbyusername/:username' , (req,res)=>{
+
+
     BlogPost.find({username : req.params.username})
     .then((post)=>{
         res.json({
@@ -232,6 +237,57 @@ router.get('/getpostbyusername/:username' , (req,res)=>{
     })  
 });
  
+router.post('/addcomment', (req,res) => {
+
+    const {id ,username , comment } = req.body;
+
+    if( !id || !username || !comment){
+
+
+        res.status(400).json(
+            {
+                success: false,
+                msg: 'Please enter all fields',
+                data : [],
+                errors :{
+                   err : 'Please enter all fields'
+                }
+              }
+        
+           );
+
+    }else{
+
+        BlogPost.findByIdAndUpdate(id, { $push: { comments: { username: username, comment: comment , date:Date() } } }, { new: true })
+        .then((updatepost)=>{
+            res.json({
+                success: true,
+                msg: 'Comment Added!',
+                data: [{ 
+                    id: updatepost?._id,
+                    comments : updatepost?.comments
+
+                    }],
+                errors: null
+            });
+        })
+        .catch((err) => {
+            res.status(400).json(
+                {
+                    success: false,
+                    msg: 'somthing wrong ! please check error',
+                    data : [],
+                    errors :{
+                       err : err
+                    }
+                  }
+            
+               );
+        }); 
+
+    }
+
+});
     
 
 

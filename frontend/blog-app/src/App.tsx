@@ -12,7 +12,6 @@ export default function App() {
       <BrowserRouter>
         <ClerkProvider publishableKey={clerkPubKey}>
           <MainRouter />
-          
         </ClerkProvider>
       </BrowserRouter>
     </>
