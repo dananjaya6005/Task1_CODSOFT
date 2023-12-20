@@ -1,6 +1,6 @@
 <h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="Blogging_web_0"></a>Blogging web</h1>
 <h2 class="code-line" data-line-start=1 data-line-end=2 ><a id="MERN_Full_Stack_1"></a>MERN Full Stack</h2>
-<p class="has-line-data" data-line-start="3" data-line-end="4"><a href="https://657b3cab206292030244ff24--helpful-panda-07ec65.netlify.app/"><img src="https://www.diamond.ac.uk/dam/jcr:39907752-358d-442d-8c2d-c7ac3349392b/Click-to-go-to-website-button1.2020-02-21-14-17-28.png" alt="N|Solid"></a></p>
+<p class="has-line-data" data-line-start="3" data-line-end="4"><a href="https://65827273be6e3b2aa831a842--ornate-stardust-b4c6b7.netlify.app/"><img src="https://www.diamond.ac.uk/dam/jcr:39907752-358d-442d-8c2d-c7ac3349392b/Click-to-go-to-website-button1.2020-02-21-14-17-28.png" alt="N|Solid"></a></p>
 <h2 class="code-line" data-line-start=9 data-line-end=10 ><a id="Features_9"></a>Features</h2>
 <ul>
 <li class="has-line-data" data-line-start="11" data-line-end="12">User Authentication: The website uses Clerk for user authentication, ensuring secure access to user accounts.</li>
